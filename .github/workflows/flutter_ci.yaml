@@ -16,7 +16,7 @@ jobs:
       - name: Set up Flutter SDK
         uses: subosito/flutter-action@v2 # Action to set up Flutter environment
         with:
-          flutter-version: '3.x' # Specify a recent Flutter version, e.g., '3.19.6' or '3.x' for latest 3.x
+          flutter-version: '3.19.6' # Or the latest stable version you use locally
           channel: 'stable'
 
       - name: Get Flutter dependencies
