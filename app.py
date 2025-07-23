@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 DOWNLOAD_DIR = "downloads"
-COOKIE_FILE = "cookies.txt"  # Your secure cookie file
+COOKIE_FILE = "cookies.txt"  # Make sure this is updated with a valid cookie
 
 if not os.path.exists(DOWNLOAD_DIR):
     os.makedirs(DOWNLOAD_DIR)
@@ -28,8 +28,12 @@ def download():
         ydl_opts = {
             'outtmpl': output_template,
             'format': 'best[ext=mp4]/best',
-            'cookiefile': COOKIE_FILE,  # ✅ Correct usage
+            'cookies': COOKIE_FILE,
             'quiet': True,
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'Accept-Language': 'en-US,en;q=0.9',
+            }
         }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -44,4 +48,3 @@ def download():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
