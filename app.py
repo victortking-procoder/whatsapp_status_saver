@@ -28,7 +28,7 @@ def download():
         ydl_opts = {
             'outtmpl': output_template,
             'format': 'best[ext=mp4]/best',
-            'cookies': COOKIE_FILE,
+            'cookiefile': COOKIE_FILE,  # ✅ Correct usage
             'quiet': True,
         }
 
@@ -44,3 +44,4 @@ def download():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
